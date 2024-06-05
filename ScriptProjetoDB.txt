@@ -1,0 +1,204 @@
+-- Criação da tabela com os Cargos e inserção de dados
+CREATE TABLE Cargo (
+  Nome_Cargo VARCHAR(50) NOT NULL,
+  Salario INTEGER NOT NULL,
+  PRIMARY KEY (Nome_Cargo)
+);
+
+INSERT INTO Cargo (Nome_Cargo, Salario) VALUES ('Supervisor departamental', 5000);
+INSERT INTO Cargo (Nome_Cargo, Salario) VALUES ('Diretor', 10000);
+INSERT INTO Cargo (Nome_Cargo, Salario) VALUES ('Presidente', 22000);
+INSERT INTO Cargo (Nome_Cargo, Salario) VALUES ('Auxiliar administrativo', 1500);
+INSERT INTO Cargo (Nome_Cargo, Salario) VALUES ('Auxiliar de limpeza', 1500);
+INSERT INTO Cargo (Nome_Cargo, Salario) VALUES ('Suporte técnico', 1200);
+INSERT INTO Cargo (Nome_Cargo, Salario) VALUES ('Desenvolvedor Jr.', 2000);
+INSERT INTO Cargo (Nome_Cargo, Salario) VALUES ('Desenvolvedor Pl', 3000);
+INSERT INTO Cargo (Nome_Cargo, Salario) VALUES ('Desenvolvedor Sr', 4000);
+INSERT INTO Cargo (Nome_Cargo, Salario) VALUES ('Vendedor Jr', 1200);
+INSERT INTO Cargo (Nome_Cargo, Salario) VALUES ('Vendedor Pl', 1500);
+INSERT INTO Cargo (Nome_Cargo, Salario) VALUES ('Vendedor Sr', 2000);
+INSERT INTO Cargo (Nome_Cargo, Salario) VALUES ('Analista de marketing Jr', 1500);
+INSERT INTO Cargo (Nome_Cargo, Salario) VALUES ('Analista de marketing Pl', 2000);
+INSERT INTO Cargo (Nome_Cargo, Salario) VALUES ('Analista de marketing Sr', 3000);
+INSERT INTO Cargo (Nome_Cargo, Salario) VALUES ('Auxiliar de logistica', 2000);
+INSERT INTO Cargo (Nome_Cargo, Salario) VALUES ('Analista financeiro Jr', 1500);
+INSERT INTO Cargo (Nome_Cargo, Salario) VALUES ('Analista financeiro Pl', 2000);
+INSERT INTO Cargo (Nome_Cargo, Salario) VALUES ('Analista financeiro Sr', 3000);
+INSERT INTO Cargo (Nome_Cargo, Salario) VALUES ('Gerente de projetos', 4500);
+INSERT INTO Cargo (Nome_Cargo, Salario) VALUES ('Gestor de Recursos Humanos', 2200);
+
+-- Criação da tabela Departamento e inserção de dados
+CREATE TABLE Departamento (
+  Cod_Depto INTEGER NOT NULL,
+  Local VARCHAR(30) NOT NULL,
+  Nome_Depto VARCHAR(40) NOT NULL UNIQUE,
+  PRIMARY KEY (Cod_Depto)
+);
+
+INSERT INTO Departamento (Cod_Depto, Local, Nome_Depto) VALUES (1, 'São Paulo', 'Departamento de Vendas');
+INSERT INTO Departamento (Cod_Depto, Local, Nome_Depto) VALUES (2, 'Rio de Janeiro', 'Departamento de Marketing');
+INSERT INTO Departamento (Cod_Depto, Local, Nome_Depto) VALUES (3, 'Campinas', 'Departamento de TI');
+INSERT INTO Departamento (Cod_Depto, Local, Nome_Depto) VALUES (4, 'Recife', 'Departamento Financeiro');
+INSERT INTO Departamento (Cod_Depto, Local, Nome_Depto) VALUES (5, 'São Paulo', 'Departamento de Recursos Humanos');
+INSERT INTO Departamento (Cod_Depto, Local, Nome_Depto) VALUES (6, 'Rio de Janeiro', 'Departamento de Logística');
+INSERT INTO Departamento (Cod_Depto, Local, Nome_Depto) VALUES (7, 'Campinas', 'Departamento de Desenvolvimento');
+INSERT INTO Departamento (Cod_Depto, Local, Nome_Depto) VALUES (10, 'São Paulo', 'Diretoria');
+
+-- Criando a tabela funcionário e atribuindo dados
+CREATE TABLE Funcionario (
+  Cod_Funcionario INTEGER NOT NULL,
+  Nome_Funcionario VARCHAR(20) NOT NULL,
+  Cargo VARCHAR(50) NOT NULL,
+  Cod_Depto INTEGER NOT NULL,
+  PRIMARY KEY (Cod_Funcionario),
+  FOREIGN KEY (Cargo) REFERENCES Cargo(Nome_Cargo),
+  FOREIGN KEY (Cod_Depto) REFERENCES Departamento(Cod_Depto)
+);
+
+INSERT INTO Funcionario (Cod_Funcionario, Nome_Funcionario, Cargo, Cod_Depto) VALUES (101, 'João', 'Supervisor departamental', 1);
+INSERT INTO Funcionario (Cod_Funcionario, Nome_Funcionario, Cargo, Cod_Depto) VALUES (102, 'Maria', 'Supervisor departamental', 2);
+INSERT INTO Funcionario (Cod_Funcionario, Nome_Funcionario, Cargo, Cod_Depto) VALUES (103, 'Pedro', 'Supervisor departamental', 3);
+INSERT INTO Funcionario (Cod_Funcionario, Nome_Funcionario, Cargo, Cod_Depto) VALUES (104, 'Ana', 'Supervisor departamental', 4);
+INSERT INTO Funcionario (Cod_Funcionario, Nome_Funcionario, Cargo, Cod_Depto) VALUES (105, 'Luiz', 'Supervisor departamental', 5);
+INSERT INTO Funcionario (Cod_Funcionario, Nome_Funcionario, Cargo, Cod_Depto) VALUES (106, 'Fernanda', 'Supervisor departamental', 6);
+INSERT INTO Funcionario (Cod_Funcionario, Nome_Funcionario, Cargo, Cod_Depto) VALUES (107, 'Carlos', 'Supervisor departamental', 7);
+INSERT INTO Funcionario (Cod_Funcionario, Nome_Funcionario, Cargo, Cod_Depto) VALUES (110, 'Alice', 'Diretor', 10);
+INSERT INTO Funcionario (Cod_Funcionario, Nome_Funcionario, Cargo, Cod_Depto) VALUES (111, 'Bruno', 'Diretor', 10);
+INSERT INTO Funcionario (Cod_Funcionario, Nome_Funcionario, Cargo, Cod_Depto) VALUES (112, 'Carla', 'Diretor', 10);
+INSERT INTO Funcionario (Cod_Funcionario, Nome_Funcionario, Cargo, Cod_Depto) VALUES (113, 'Daniel', 'Diretor', 10);
+INSERT INTO Funcionario (Cod_Funcionario, Nome_Funcionario, Cargo, Cod_Depto) VALUES (114, 'Eva', 'Diretor', 10);
+INSERT INTO Funcionario (Cod_Funcionario, Nome_Funcionario, Cargo, Cod_Depto) VALUES (1000, 'Carlos Alberto', 'Presidente', 10);
+INSERT INTO Funcionario (Cod_Funcionario, Nome_Funcionario, Cargo, Cod_Depto) VALUES (200, 'Raphael', 'Suporte técnico', 3);
+INSERT INTO Funcionario (Cod_Funcionario, Nome_Funcionario, Cargo, Cod_Depto) VALUES (201, 'Carlos Eduardo', 'Suporte técnico', 3);
+INSERT INTO Funcionario (Cod_Funcionario, Nome_Funcionario, Cargo, Cod_Depto) VALUES (202, 'Rafael', 'Desenvolvedor Jr.', 7);
+INSERT INTO Funcionario (Cod_Funcionario, Nome_Funcionario, Cargo, Cod_Depto) VALUES (203, 'Camila', 'Desenvolvedor Jr.', 7);
+INSERT INTO Funcionario (Cod_Funcionario, Nome_Funcionario, Cargo, Cod_Depto) VALUES (214, 'Felipe', 'Desenvolvedor Pl', 7);
+INSERT INTO Funcionario (Cod_Funcionario, Nome_Funcionario, Cargo, Cod_Depto) VALUES (215, 'Gilson', 'Desenvolvedor Sr', 7);
+INSERT INTO Funcionario (Cod_Funcionario, Nome_Funcionario, Cargo, Cod_Depto) VALUES (219, 'Alan', 'Desenvolvedor Jr.', 7);
+INSERT INTO Funcionario (Cod_Funcionario, Nome_Funcionario, Cargo, Cod_Depto) VALUES (220, 'Eduardo', 'Desenvolvedor Jr.', 7);
+INSERT INTO Funcionario (Cod_Funcionario, Nome_Funcionario, Cargo, Cod_Depto) VALUES (221, 'Samanta', 'Desenvolvedor Pl', 7);
+INSERT INTO Funcionario (Cod_Funcionario, Nome_Funcionario, Cargo, Cod_Depto) VALUES (223, 'Ísis', 'Desenvolvedor Pl', 7);
+INSERT INTO Funcionario (Cod_Funcionario, Nome_Funcionario, Cargo, Cod_Depto) VALUES (222, 'Ciro', 'Desenvolvedor Sr', 7);
+INSERT INTO Funcionario (Cod_Funcionario, Nome_Funcionario, Cargo, Cod_Depto) VALUES (204, 'Pedro', 'Vendedor Jr', 1);
+INSERT INTO Funcionario (Cod_Funcionario, Nome_Funcionario, Cargo, Cod_Depto) VALUES (205, 'Mariana', 'Vendedor Pl', 1);
+INSERT INTO Funcionario (Cod_Funcionario, Nome_Funcionario, Cargo, Cod_Depto) VALUES (216, 'Caroline', 'Vendedor Sr', 1);
+INSERT INTO Funcionario (Cod_Funcionario, Nome_Funcionario, Cargo, Cod_Depto) VALUES (206, 'Lucas', 'Analista de marketing Jr', 2);
+INSERT INTO Funcionario (Cod_Funcionario, Nome_Funcionario, Cargo, Cod_Depto) VALUES (207, 'Juliana', 'Analista de marketing Pl', 2);
+INSERT INTO Funcionario (Cod_Funcionario, Nome_Funcionario, Cargo, Cod_Depto) VALUES (217, 'Caio', 'Analista de marketing Sr', 2);
+INSERT INTO Funcionario (Cod_Funcionario, Nome_Funcionario, Cargo, Cod_Depto) VALUES (208, 'Gustavo', 'Auxiliar de logistica', 6);
+INSERT INTO Funcionario (Cod_Funcionario, Nome_Funcionario, Cargo, Cod_Depto) VALUES (209, 'Laura', 'Auxiliar de logistica', 6);
+INSERT INTO Funcionario (Cod_Funcionario, Nome_Funcionario, Cargo, Cod_Depto) VALUES (210, 'Rodrigo', 'Analista financeiro Jr', 4);
+INSERT INTO Funcionario (Cod_Funcionario, Nome_Funcionario, Cargo, Cod_Depto) VALUES (211, 'Bianca', 'Analista financeiro Pl', 4);
+INSERT INTO Funcionario (Cod_Funcionario, Nome_Funcionario, Cargo, Cod_Depto) VALUES (218, 'Beatriz', 'Analista financeiro Sr', 4);
+INSERT INTO Funcionario (Cod_Funcionario, Nome_Funcionario, Cargo, Cod_Depto) VALUES (212, 'Fernando', 'Gestor de Recursos Humanos', 5);
+INSERT INTO Funcionario (Cod_Funcionario, Nome_Funcionario, Cargo, Cod_Depto) VALUES (213, 'Patrícia', 'Gestor de Recursos Humanos', 5);
+
+-- Criando as tabelas de jogos e inserindo dados
+CREATE TABLE Jogos (
+  Cod_Jogo INTEGER NOT NULL,
+  Nome_Jogo VARCHAR(50) NOT NULL UNIQUE,
+  PRIMARY KEY (Cod_Jogo)
+);
+
+INSERT INTO Jogos (Cod_Jogo, Nome_Jogo) VALUES (10, 'Coral I'); 
+INSERT INTO Jogos (Cod_Jogo, Nome_Jogo) VALUES (20, 'Viboras'); 
+INSERT INTO Jogos (Cod_Jogo, Nome_Jogo) VALUES (30, 'Najas: Battle Beast');
+INSERT INTO Jogos (Cod_Jogo, Nome_Jogo) VALUES (40, 'Coral II');
+
+-- Criando a tabela de desenvolvimento de jogos e populando dados nela
+CREATE TABLE Desenvolvimento_Jogos (
+   Cod_Jogo INTEGER NOT NULL,
+   Cod_Funcionario INTEGER NOT NULL,
+   PRIMARY KEY (Cod_Jogo, Cod_Funcionario),
+   FOREIGN KEY (Cod_Jogo) REFERENCES Jogos(Cod_Jogo),
+   FOREIGN KEY (Cod_Funcionario) REFERENCES Funcionario(Cod_Funcionario)
+);
+
+INSERT INTO Desenvolvimento_Jogos (Cod_Jogo, Cod_Funcionario) VALUES (10, 222);
+INSERT INTO Desenvolvimento_Jogos (Cod_Jogo, Cod_Funcionario) VALUES (10, 202);
+INSERT INTO Desenvolvimento_Jogos (Cod_Jogo, Cod_Funcionario) VALUES (10, 221);
+INSERT INTO Desenvolvimento_Jogos (Cod_Jogo, Cod_Funcionario) VALUES (20, 203);
+INSERT INTO Desenvolvimento_Jogos (Cod_Jogo, Cod_Funcionario) VALUES (20, 214);
+INSERT INTO Desenvolvimento_Jogos (Cod_Jogo, Cod_Funcionario) VALUES (20, 215);
+INSERT INTO Desenvolvimento_Jogos (Cod_Jogo, Cod_Funcionario) VALUES (30, 219);
+INSERT INTO Desenvolvimento_Jogos (Cod_Jogo, Cod_Funcionario) VALUES (30, 215);
+INSERT INTO Desenvolvimento_Jogos (Cod_Jogo, Cod_Funcionario) VALUES (30, 220);
+INSERT INTO Desenvolvimento_Jogos (Cod_Jogo, Cod_Funcionario) VALUES (20, 202);
+INSERT INTO Desenvolvimento_Jogos (Cod_Jogo, Cod_Funcionario) VALUES (10, 214);
+INSERT INTO Desenvolvimento_Jogos (Cod_Jogo, Cod_Funcionario) VALUES (20, 215);
+
+-- Criando tabela Cliente e inserindo dados nela
+CREATE TABLE Cliente (
+  Cod_Cliente INTEGER NOT NULL,
+  Nome_Cliente VARCHAR(60) NOT NULL,
+  Endereco VARCHAR(50) NOT NULL,
+  Telefone INTEGER NOT NULL,
+  Idade INTEGER NOT NULL,
+  PRIMARY KEY(Cod_Cliente)
+);
+
+INSERT INTO Cliente (Cod_Cliente, Nome_Cliente, Endereco, Telefone, Idade) VALUES (1, 'João Silva', 'Rua das Flores, 123', 5551234567, 30);
+INSERT INTO Cliente (Cod_Cliente, Nome_Cliente, Endereco, Telefone, Idade) VALUES (2, 'Maria Oliveira', 'Avenida dos Sonhos, 456', 5559876543, 25);
+INSERT INTO Cliente (Cod_Cliente, Nome_Cliente, Endereco, Telefone, Idade) VALUES (3, 'Carlos Souza', 'Rua das Árvores, 789', 5556543219, 40);
+INSERT INTO Cliente (Cod_Cliente, Nome_Cliente, Endereco, Telefone, Idade) VALUES (4, 'Ana Santos', 'Avenida da Esperança, 987', 5553219876, 35);
+INSERT INTO Cliente (Cod_Cliente, Nome_Cliente, Endereco, Telefone, Idade) VALUES (5, 'Luiz Pereira', 'Rua das Montanhas, 345', 5558882222, 28);
+INSERT INTO Cliente (Cod_Cliente, Nome_Cliente, Endereco, Telefone, Idade) VALUES (6, 'Fernanda Lima', 'Avenida do Sol, 654', 5551113333, 33);
+INSERT INTO Cliente (Cod_Cliente, Nome_Cliente, Endereco, Telefone, Idade) VALUES (7, 'Paula Costa', 'Rua da Lua, 234', 5559991111, 27);
+INSERT INTO Cliente (Cod_Cliente, Nome_Cliente, Endereco, Telefone, Idade) VALUES (8, 'Marcos Santos', 'Avenida do Mar, 543', 5557774444, 38);
+INSERT INTO Cliente (Cod_Cliente, Nome_Cliente, Endereco, Telefone, Idade) VALUES (9, 'Roberta Oliveira', 'Rua das Estrelas, 876', 5556669999, 32);
+INSERT INTO Cliente (Cod_Cliente, Nome_Cliente, Endereco, Telefone, Idade) VALUES (10, 'Rafaela Costa', 'Avenida da Lua, 234', 5553338888, 29);
+
+CREATE TABLE Pedidos(
+  Cod_Pedido INTEGER NOT NULL,
+  Cod_Jogo INTEGER NOT NULL,
+  Cod_Cliente INTEGER NOT NULL,
+  PRIMARY KEY (Cod_Pedido),
+  FOREIGN KEY (Cod_Jogo) REFERENCES Jogos(Cod_Jogo),
+  FOREIGN KEY (Cod_Cliente) REFERENCES Cliente(Cod_Cliente)
+);
+
+INSERT INTO Pedidos (Cod_Pedido, Cod_Jogo, Cod_Cliente) VALUES (1, 10, 1);
+INSERT INTO Pedidos (Cod_Pedido, Cod_Jogo, Cod_Cliente) VALUES (2, 10, 2);
+INSERT INTO Pedidos (Cod_Pedido, Cod_Jogo, Cod_Cliente) VALUES (3, 20, 1);
+INSERT INTO Pedidos (Cod_Pedido, Cod_Jogo, Cod_Cliente) VALUES (4, 30, 10);
+INSERT INTO Pedidos (Cod_Pedido, Cod_Jogo, Cod_Cliente) VALUES (5, 40, 3);
+INSERT INTO Pedidos (Cod_Pedido, Cod_Jogo, Cod_Cliente) VALUES (6, 10, 8);
+INSERT INTO Pedidos (Cod_Pedido, Cod_Jogo, Cod_Cliente) VALUES (7, 20, 7);
+INSERT INTO Pedidos (Cod_Pedido, Cod_Jogo, Cod_Cliente) VALUES (8, 30, 9);
+INSERT INTO Pedidos (Cod_Pedido, Cod_Jogo, Cod_Cliente) VALUES (9, 40, 1);
+INSERT INTO Pedidos (Cod_Pedido, Cod_Jogo, Cod_Cliente) VALUES (10, 10, 2);
+INSERT INTO Pedidos (Cod_Pedido, Cod_Jogo, Cod_Cliente) VALUES (11, 20, 1);
+INSERT INTO Pedidos (Cod_Pedido, Cod_Jogo, Cod_Cliente) VALUES (12, 30, 4);
+INSERT INTO Pedidos (Cod_Pedido, Cod_Jogo, Cod_Cliente) VALUES (13, 30, 5);
+INSERT INTO Pedidos (Cod_Pedido, Cod_Jogo, Cod_Cliente) VALUES (14, 20, 6);
+
+-----------------------------------------------------
+--SCRIPT DAS CONSULTAS
+
+1)
+
+SELECT *
+FROM Funcionario F INNER JOIN Cargo C
+ON (F.Cargo = C.Nome_Cargo);
+
+2)
+
+SELECT J.Cod_Jogo, F.Nome_Funcionario
+FROM Jogos J
+INNER JOIN Desenvolvimento_Jogos D ON J.Cod_Jogo = D.Cod_Jogo
+INNER JOIN Funcionario F ON F.Cod_Funcionario = D.Cod_Funcionario
+GROUP BY J.Cod_Jogo, F.Nome_Funcionario
+ORDER BY J.Cod_Jogo ASC;
+
+3)
+
+SELECT C.Cod_Cliente, C.Nome_Cliente, C.Endereco, C.Telefone, C.Idade, P.Cod_Pedido, P.Cod_Jogo
+FROM Cliente C
+LEFT JOIN Pedidos P ON C.Cod_Cliente = P.Cod_Cliente;
+
+4)
+
+SELECT F.Cod_Funcionario, F.Nome_Funcionario, C.Nome_Cargo, D.Nome_Depto
+FROM Funcionario F
+INNER JOIN Cargo C ON F.Cargo = C.Nome_Cargo
+INNER JOIN Departamento D ON F.Cod_Depto = D.Cod_Depto;
